@@ -1,0 +1,19 @@
+name: 01-my first gha job
+
+0n:
+  push:
+    branches: [main, master, feature]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  printmyjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run single commands
+        run: echo "welcome to gha"
+      - name: run multiple commands
+        run: |
+          echo "Hello from David"
+          echo "happy to help you"
