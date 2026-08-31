@@ -7,14 +7,22 @@ on:
 jobs:
   node-setup:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node: [22, 24, 26]
+
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
 
+      - uses: actions/setup-node@v7
         with:
-          node-version: ${{matrix.node}}
+          node-version: ${{ matrix.node }}
+
       - run: npm install
-      - run: node index.js
+
+      - name: Start Node.js application
+        run: |
+          node index.js &
+          sleep 5
+          curl http://localhost:3000
