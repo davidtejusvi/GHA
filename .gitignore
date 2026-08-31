@@ -1,0 +1,19 @@
+# Sensitive configuration files
+secrets.yaml
+secrets.yml
+
+# Environment-specific files
+config.local.yaml
+config.local.yml
+
+# Kubernetes secrets
+*-secret.yaml
+*-secret.yml
+
+# Terraform variable files
+*.tfvars
+*.tfvars.json
+
+# Generated YAML files
+generated/*.yaml
+generated/*.yml
