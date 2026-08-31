@@ -1,0 +1,18 @@
+name: 02-Conditional job
+
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  run-always-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print echo run-always-job
+        run: echo "wlecome gha -print always"
+  run-only-main:
+    runs-on: ubuntu-latest
+    if: github.ref = 'ref/heads/main'
+    steps:
+      - name: Print with main branches
+        run: echo "welcome to GHA class - Print only main branch"
