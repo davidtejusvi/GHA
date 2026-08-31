@@ -3,16 +3,19 @@ const http = require("http");
 const PORT = 3000;
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/html" });
+    res.writeHead(200, {
+        "Content-Type": "text/html",
+    });
 
     res.end(`
     <!DOCTYPE html>
     <html>
     <head>
       <title>AWS Planning</title>
+
       <style>
         body {
-          font-family: Arial;
+          font-family: Arial, sans-serif;
           margin: 40px;
           background: #f4f6f8;
         }
@@ -40,6 +43,7 @@ const server = http.createServer((req, res) => {
     </head>
 
     <body>
+
       <h1>AWS Planning Page</h1>
 
       <div class="card">
@@ -49,6 +53,7 @@ const server = http.createServer((req, res) => {
 
       <div class="card">
         <h3>AWS Services</h3>
+
         <ul>
           <li>EC2 - Application Server</li>
           <li>S3 - File Storage</li>
@@ -60,6 +65,7 @@ const server = http.createServer((req, res) => {
 
       <div class="card">
         <h3>Deployment Plan</h3>
+
         <ol>
           <li>Create VPC</li>
           <li>Create EC2 instance</li>
@@ -72,11 +78,12 @@ const server = http.createServer((req, res) => {
       <button onclick="alert('AWS plan created!')">
         Start Planning
       </button>
+
     </body>
     </html>
   `);
 });
 
 server.listen(PORT, () => {
-    console.log(`AWS Planning page running at http://localhost:\${PORT}\`);
-    });
+    console.log("AWS Planning page running on port " + PORT);
+});
