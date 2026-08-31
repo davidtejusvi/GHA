@@ -1,10 +1,10 @@
 name: 01-my first gha job
 
-0n:
+on:
   push:
-    branches: [main, master, feature]
+    branches: ["main", "master", "feature"]
   pull_request:
-    branches: [main]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
