@@ -1,0 +1,32 @@
+name: 04-Matrix example with node js node-version
+
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  node-setup:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [22, 24, 26]
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: npm install
+
+      - name: Start Node.js application
+        run: |
+          node index.js &
+          sleep 5
+          curl http://localhost:3000
