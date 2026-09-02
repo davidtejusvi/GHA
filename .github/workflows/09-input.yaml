@@ -1,4 +1,4 @@
-name: 08 - OIDC
+name: 09 - input parameter
 
 on:
   workflow_dispatch:
