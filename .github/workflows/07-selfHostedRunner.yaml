@@ -26,9 +26,6 @@ jobs:
         run: aws sts get-caller-identity
 
       - name: List S3 buckets
-        run: aws s3 ls
-
-      - name: Stop application
-        if: always()
         run: |
-          kill $(cat app.pid) || true
+          aws s3 ls
+          aws s3 mb s3://david.tejesvi.12345678
