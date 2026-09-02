@@ -1,16 +1,29 @@
----
+name: 07 - Self Hosted Runner
+
+on:
+  push:
+    branches: ["*"]
+
 jobs:
   node-setup:
     runs-on: self-hosted
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
-      - name: Run my application
-        run: node index.js
-      - name: Use role and list bucket
+
+      - name: Start AWS Planning application
         run: |
-          aws s3 ls aws s3 mb s3://david.gha.08022026
-name: 07 - Self Hosted Runner
-'on':
-  push:
-    branches: ["*"]
+          node index.js > app.log 2>&1 &
+          echo $! > app.pid
+          sleep 5
+
+      - name: Check application
+        run: |
+          curl http://localhost:3000
+
+      - name: Check AWS identity
+        run: aws sts get-caller-identity
+
+      - name: List S3 buckets
+        run: aws s3 ls
