@@ -1,0 +1,24 @@
+name: 06-Variable example
+
+on: workflow_dispatch
+
+env:
+  NAME: David
+
+jobs:
+  myFirstJob:
+    runs-on: ubuntu-latest
+    env:
+      GREETINGS: Hello
+    steps:
+      - name: Print my name
+        env:
+          COURSE: GHA
+
+      - run: echo "$GREETINGS, $NAME and am learning $COURSE"
+
+      - name: Print variable from github context variables
+        run: echo "My github repo name is ${{github.repository}} and owner ${{github.repository_owner}}"
+
+      - name: Print configuration variables
+        run: echo "My project name is ${{vars.PROJECT_NAME}}"
