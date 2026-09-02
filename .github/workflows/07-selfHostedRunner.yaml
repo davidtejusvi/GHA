@@ -1,0 +1,16 @@
+---
+jobs:
+  node-setup:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Run my application
+        run: node index.js
+      - name: Use role and list bucket
+        run: |
+          aws s3 ls aws s3 mb s3://david.gha.08022026
+name: 07 - Self Hosted Runner
+'on':
+  push:
+    branches: ["*"]
