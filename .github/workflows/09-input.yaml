@@ -28,5 +28,5 @@ jobs:
 
       - name: create S3 buckets using OIDC
         run: |
-          aws s3 mb s3://${{ github.event.inputs.bucket-name}} --region ${{secrets.AWS_REGION}}
+          aws s3 mb s3://${{ github.event.inputs.bucket-name}}
           aws s3 ls
